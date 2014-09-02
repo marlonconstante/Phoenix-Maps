@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      @@include('./src/svg/%name%.css')
+      html, body, #map {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #map svg {
+        width: %width%;
+        height: %height%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map">
+      @@include('./src/svg/%name%.svg')
+    </div>
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/jquery.panzoom.js"></script>
+    <script src="lib/jquery.mousewheel.js"></script>
+    <script>
+      var QueryString = function () {
+        // This function is anonymous, is executed immediately and
+        // the return value is assigned to QueryString!
+        var query_string = {};
+        var query = location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0; i<vars.length; i++) {
+          var pair = vars[i].split("=");
+            // If first entry with this name
+          if (typeof query_string[pair[0]] === "undefined") {
+            query_string[pair[0]] = pair[1];
+            // If second entry with this name
+          } else if (typeof query_string[pair[0]] === "string") {
+            var arr = [ query_string[pair[0]], pair[1] ];
+            query_string[pair[0]] = arr;
+            // If third or later entry with this name
+          } else {
+            query_string[pair[0]].push(pair[1]);
+          }
+        }
+        return query_string;
+      }();
+
+      // Utilities to manipulate svg elements
+      var SvgUtils = {
+        getSvgSize: function() {
+            var $svg = $("svg");
+            return {
+              width: $svg.width(),
+              height: $svg.height()
+            };
+        },
+        getSvgBoxSize: function() {
+          return $("svg")[0].getBBox();
+        },
+        getCenterX: function(element) {
+          if (element) {
+            var x = SvgUtils.getX(element) + SvgUtils.getWidth(element) / 2;
+            return x + (x - $("body").width() / 2) / 2;
+          }
+          return 0;
+        },
+        getCenterY: function(element) {
+          if (element) {
+            var y = SvgUtils.getY(element) + SvgUtils.getHeight(element) / 2;
+            return y + (y - $("body").height() / 2) / 2;
+          }
+          return 0;
+        },
+        getX: function(element) {
+          return (element.getBBox().x * SvgUtils.getSvgSize().width) / SvgUtils.getSvgBoxSize().width;
+        },
+        getY: function(element) {
+          return (element.getBBox().y * SvgUtils.getSvgSize().height) / SvgUtils.getSvgBoxSize().height;
+        },
+        getWidth: function(element) {
+          return (element.getBBox().width * SvgUtils.getSvgSize().width) / SvgUtils.getSvgBoxSize().width;
+        },
+        getHeight: function(element) {
+          return (element.getBBox().height * SvgUtils.getSvgSize().height) / SvgUtils.getSvgBoxSize().height;
+        },
+        zoomAt: function(id) {
+          var $element = $("#" + id);
+          var $svg = $("svg");
+          var exists = $element.length;
+
+          if (exists)
+          {
+            $element.css("fill", "red");
+          } else {
+            var x = ($svg.width() - $("body").width()) / 2;
+            $svg.panzoom("pan", -x, 0);
+          }
+
+          $svg.panzoom("zoom", exists ? 3 : 1,
+            {
+              animate: true,
+              focal: {
+                clientX: SvgUtils.getCenterX($element[0]),
+                clientY: SvgUtils.getCenterY($element[0])
+              }
+            }
+          );
+        }
+      };
+
+      (function() {
+        var $panzoom = $("svg").panzoom({
+          maxScale: 5,
+          minScale: 1,
+          increment: 0.5,
+          contain: "invert"
+        });
+
+        SvgUtils.zoomAt(QueryString.id);
+      })();
+    </script>
+
+  </body>
+
+</html>

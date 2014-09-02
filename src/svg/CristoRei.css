@@ -1,0 +1,11 @@
+@charset "UTF-8";
+@font-face { font-family:"Arial";src:url("#FontID1") format(svg)}
+@font-face { font-family:"Century Gothic";src:url("#FontID0") format(svg)}
+.fil1 {fill:#FEFEFE}
+.fil2 {fill:#D2D3D5}
+.fil4 {fill:#373435}
+.fil3 {fill:#D2E4A1}
+.fil0 {fill:#AEE1F9}
+.fnt1 {font-weight:normal;font-size:1351.28px;font-family:'Arial'}
+.fnt2 {font-weight:bold;font-size:1801.67px;font-family:'Arial'}
+.fnt0 {font-weight:normal;font-size:1929.26px;font-family:'Century Gothic'}

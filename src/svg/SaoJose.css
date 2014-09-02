@@ -1,0 +1,10 @@
+@charset "UTF-8";
+@font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
+.fil1 {fill:#FEFEFE}
+.fil3 {fill:#D2D3D5}
+.fil2 {fill:#373435}
+.fil4 {fill:#D2E4A1}
+.fil0 {fill:#AEE1F9}
+.fnt0 {font-weight:normal;font-size:1351.28px;font-family:'Arial'}
+.fnt1 {font-weight:bold;font-size:1801.67px;font-family:'Arial'}
+.fnt2 {font-style:italic;font-weight:normal;font-size:1351.28px;font-family:'Arial'}
