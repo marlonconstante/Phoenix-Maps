@@ -1102,15 +1102,15 @@ viewBox="0 0 59400 42000"
         },
         getCenterX: function(element) {
           if (element) {
-            var x = SvgUtils.getX(element) + SvgUtils.getWidth(element) / 2;
-            return x + (x - $("body").width() / 2) / 2;
+            var x = SvgUtils.getX(element);
+            return x + (x - $("#map").width() / 2);
           }
           return 0;
         },
         getCenterY: function(element) {
           if (element) {
-            var y = SvgUtils.getY(element) + SvgUtils.getHeight(element) / 2;
-            return y + (y - $("body").height() / 2) / 2;
+            var y = SvgUtils.getY(element);
+            return y + (y - $("#map").height() / 2);
           }
           return 0;
         },
