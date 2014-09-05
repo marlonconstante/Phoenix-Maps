@@ -1039,14 +1039,14 @@ viewBox="0 0 42000 59400"
             });
           }
         },
-        zoomAt: function(scale, locationCode, unitCode) {
-          var $unit = $("#" + unitCode);
-          $unit.css("fill", "#5eaaff");
-          $unit.css("stroke", "#0079ff");
-          $unit.css("stroke-width", "80");
+        zoomAt: function(scale, locationCode, sectorCode) {
+          var $sector = $("#" + sectorCode);
+          $sector.css("fill", "#5eaaff");
+          $sector.css("stroke", "#0079ff");
+          $sector.css("stroke-width", "80");
 
           SvgUtils.showAndMove("myLocation", locationCode, true, true);
-          SvgUtils.showAndMove("arrow", unitCode, true, false);
+          SvgUtils.showAndMove("arrow", sectorCode, true, false);
 
           var $map = $("#map");
           if (scale == 1)
@@ -1076,7 +1076,7 @@ viewBox="0 0 42000 59400"
           contain: "invert"
         });
 
-        SvgUtils.zoomAt(Number(QueryString.scale || 1), QueryString.locationCode || "", QueryString.unitCode || "");
+        SvgUtils.zoomAt(Number(QueryString.scale || 1), QueryString.locationCode || "", QueryString.sectorCode || "");
       })();
     </script>
 
