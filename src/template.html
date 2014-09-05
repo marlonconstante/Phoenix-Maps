@@ -12,11 +12,24 @@
         width: 100%;
         height: 100%;
       }
-      #map svg {
+      #map {
         width: %width%;
         height: %height%;
+      }
+      #map svg {
         -webkit-backface-visibility: initial !important;
         -webkit-transform-origin: 50% 50%;
+      }
+      #myLocation, #arrow {
+        display: none;
+        position: absolute;
+        stroke-width: 1;
+      }
+      #myLocation {
+        stroke: #d08e00;
+      }
+      #arrow {
+        stroke: #0079ff;
       }
     </style>
   </head>
@@ -24,6 +37,8 @@
   <body>
     <div id="map">
       @@include('./src/svg/%name%.svg')
+      @@include('./src/svg/arrow.svg')
+      @@include('./src/svg/myLocation.svg')
     </div>
 
     <script src="lib/jquery.js"></script>
@@ -55,15 +70,15 @@
 
       // Utilities to manipulate svg elements
       var SvgUtils = {
-        getSvgSize: function() {
-            var $svg = $("svg");
+        getSvgSize: function(element) {
+            var $svg = $(element).closest("svg");
             return {
               width: $svg.width(),
               height: $svg.height()
             };
         },
-        getSvgBoxSize: function() {
-          return $("svg")[0].getBBox();
+        getSvgBoxSize: function(element) {
+          return $(element).closest("svg")[0].getBBox();
         },
         getCenterX: function(element) {
           if (element) {
@@ -80,36 +95,51 @@
           return 0;
         },
         getX: function(element) {
-          return (element.getBBox().x * SvgUtils.getSvgSize().width) / SvgUtils.getSvgBoxSize().width;
+          return (element.getBBox().x * SvgUtils.getSvgSize(element).width) / SvgUtils.getSvgBoxSize(element).width;
         },
         getY: function(element) {
-          return (element.getBBox().y * SvgUtils.getSvgSize().height) / SvgUtils.getSvgBoxSize().height;
+          return (element.getBBox().y * SvgUtils.getSvgSize(element).height) / SvgUtils.getSvgBoxSize(element).height;
         },
         getWidth: function(element) {
-          return (element.getBBox().width * SvgUtils.getSvgSize().width) / SvgUtils.getSvgBoxSize().width;
+          return (element.getBBox().width * SvgUtils.getSvgSize(element).width) / SvgUtils.getSvgBoxSize(element).width;
         },
         getHeight: function(element) {
-          return (element.getBBox().height * SvgUtils.getSvgSize().height) / SvgUtils.getSvgBoxSize().height;
+          return (element.getBBox().height * SvgUtils.getSvgSize(element).height) / SvgUtils.getSvgBoxSize(element).height;
         },
-        zoomAt: function(id) {
-          var $element = $("#" + id);
-          var $svg = $("svg");
-          var exists = $element.length;
+        showAndMove: function(idElement, IdReference, horizontalMiddle, verticalMiddle) {
+          var $element = $("#" + idElement);
+          var $reference = $("#" + IdReference);
+          if ($reference.length > 0) {
+            $element.css({
+              display: "block",
+              left: SvgUtils.getX($reference[0]) + (horizontalMiddle ? SvgUtils.getWidth($reference[0]) / 2 : 0) - $element.width() / 2,
+              top: SvgUtils.getY($reference[0]) + (verticalMiddle ? SvgUtils.getHeight($reference[0]) / 2 : 0) - $element.height()
+            });
+          }
+        },
+        zoomAt: function(scale, locationCode, unitCode) {
+          var $unit = $("#" + unitCode);
+          $unit.css("fill", "#5eaaff");
+          $unit.css("stroke", "#0079ff");
+          $unit.css("stroke-width", "80");
 
-          if (exists)
+          SvgUtils.showAndMove("myLocation", locationCode, true, true);
+          SvgUtils.showAndMove("arrow", unitCode, true, false);
+
+          var $map = $("#map");
+          if (scale == 1)
           {
-            $element.css("fill", "red");
-          } else {
-            var x = ($svg.width() - $("body").width()) / 2;
-            $svg.panzoom("pan", -x, 0);
+            var x = ($map.width() - $("body").width()) / 2;
+            $map.panzoom("pan", -x, 0);
           }
 
-          $svg.panzoom("zoom", exists ? 3 : 1,
+          var $location = $("#" + locationCode);
+          $map.panzoom("zoom", scale,
             {
               animate: true,
               focal: {
-                clientX: SvgUtils.getCenterX($element[0]),
-                clientY: SvgUtils.getCenterY($element[0])
+                clientX: SvgUtils.getCenterX($location[0]),
+                clientY: SvgUtils.getCenterY($location[0])
               }
             }
           );
@@ -117,14 +147,14 @@
       };
 
       (function() {
-        var $panzoom = $("svg").panzoom({
+        $("#map").panzoom({
           maxScale: 5,
           minScale: 1,
           increment: 0.5,
           contain: "invert"
         });
 
-        SvgUtils.zoomAt(QueryString.id);
+        SvgUtils.zoomAt(Number(QueryString.scale || 1), QueryString.locationCode || "", QueryString.unitCode || "");
       })();
     </script>
 
