@@ -345,17 +345,19 @@ viewBox="0 0 59400 42000"
         getSvgBoxSize: function(element) {
           return $(element).closest("svg")[0].getBBox();
         },
-        getCenterX: function(element) {
+        getCenterX: function(element, scale) {
           if (element) {
             var x = SvgUtils.getX(element);
-            return x + (x - $("#map").width() / 2);
+            x = x + (x - $("#map").width() / 2);
+            return x + ($("#map").width() - $("body").width()) / scale;
           }
           return 0;
         },
-        getCenterY: function(element) {
+        getCenterY: function(element, scale) {
           if (element) {
             var y = SvgUtils.getY(element);
-            return y + (y - $("#map").height() / 2);
+            y = y + (y - $("#map").height() / 2);
+            return y + ($("#map").height() - $("body").height()) / scale;
           }
           return 0;
         },
@@ -403,8 +405,8 @@ viewBox="0 0 59400 42000"
             {
               animate: true,
               focal: {
-                clientX: SvgUtils.getCenterX($location[0]),
-                clientY: SvgUtils.getCenterY($location[0])
+                clientX: SvgUtils.getCenterX($location[0], scale),
+                clientY: SvgUtils.getCenterY($location[0], scale)
               }
             }
           );
