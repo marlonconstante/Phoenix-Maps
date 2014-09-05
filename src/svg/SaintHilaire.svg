@@ -52,7 +52,7 @@ viewBox="0 0 59400 42000"
    <glyph unicode="l" horiz-adv-x="277"><path d="M71.9988 0l0 716.002 137.004 0 0 -716.002 -137.004 0z"/></glyph>
    <glyph unicode="i" horiz-adv-x="277"><path d="M71.9988 588.999l0 127.003 137.004 0 0 -127.003 -137.004 0zm0 -588.999l0 519.002 137.004 0 0 -519.002 -137.004 0z"/></glyph>
   </font>
-  <font id="FontID0" horiz-adv-x="739" font-variant="normal" style="fill-rule:nonzero" font-style="normal" font-weight="700">
+  <font id="FontID0" horiz-adv-x="739" font-variant="normal" style="fill-rule:nonzero" font-weight="700">
 	<font-face 
 		font-family="Century Gothic">
 	</font-face>
@@ -96,7 +96,7 @@ viewBox="0 0 59400 42000"
   <g transform="matrix(0.469933 0 0 0.469933 8352.12 21293.3)">
    <text x="29700" y="22510"  class="fil1 fnt2">Prédio/ Cafeteria</text>
   </g>
-  <g id="_711802992">
+  <g id="setor_0_00">
    <path class="fil4" d="M20047 27292l11583 0 0 2854 -4535 0 0 -1453 -2330 0 -183 0 0 1453 -1924 0 0 -1453 -707 0 0 1453 -1904 0c0,-2137 0,-717 0,-2854z"/>
    <polygon class="fil4" points="18702,27479 25895,25921 32975,27479 "/>
   </g>
@@ -110,29 +110,26 @@ viewBox="0 0 59400 42000"
   <g transform="matrix(0.469933 0 0 0.469933 19789.8 4159.16)">
    <text x="29700" y="21000"  class="fil1 fnt2">Setor 3</text>
   </g>
-  <polygon class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
-  <polygon class="fil2" points="12490,5132 12490,4398 23932,4398 23932,5132 "/>
-  <polygon class="fil2" points="12490,6261 12490,5528 23932,5528 23932,6261 "/>
-  <polygon class="fil2" points="12998,7391 12998,6657 24440,6657 24440,7391 "/>
-  <polygon class="fil2" points="13506,8521 13506,7787 24948,7787 24948,8521 "/>
-  <polygon class="fil2" points="14014,9650 14014,8917 25456,8917 25456,9650 "/>
-  <polygon class="fil2" points="14014,10780 14014,10046 25456,10046 25456,10780 "/>
-  <polygon class="fil2" points="14014,11909 14014,11176 25456,11176 25456,11909 "/>
-  <polygon class="fil2" points="14014,13039 14014,12305 25456,12305 25456,13039 "/>
-  <polygon class="fil2" points="14014,14169 14014,13435 25456,13435 25456,14169 "/>
-  <polygon class="fil2" points="7443,12542 8259,12589 8138,14668 7322,14621 "/>
-  <polygon class="fil2" points="7301,14982 8117,15029 7996,17109 7180,17061 "/>
-  <polygon class="fil2" points="7159,17422 7975,17470 7854,19549 7038,19501 "/>
-  <polygon class="fil2" points="10969,3227 11787,3227 11787,5310 10969,5310 "/>
-  <polygon class="fil2" points="10969,5671 11787,5671 11787,7754 10969,7754 "/>
-  <polygon class="fil2" points="10969,8116 11787,8116 11787,10199 10969,10199 "/>
-  <polygon class="fil2" points="15206,16285 15206,15552 25456,15552 25456,16285 "/>
-  <polygon class="fil2" points="15206,17415 15206,16681 25456,16681 25456,17415 "/>
-  <polygon class="fil2" points="15206,18545 15206,17811 25456,17811 25456,18545 "/>
+  <polygon id="setor_4_01" class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
+  <polygon id="setor_4_09" class="fil2" points="12490,5132 12490,4398 23932,4398 23932,5132 "/>
+  <polygon id="setor_4_08" class="fil2" points="12490,6261 12490,5528 23932,5528 23932,6261 "/>
+  <polygon id="setor_4_07" class="fil2" points="12998,7391 12998,6657 24440,6657 24440,7391 "/>
+  <polygon id="setor_4_06" class="fil2" points="13506,8521 13506,7787 24948,7787 24948,8521 "/>
+  <polygon id="setor_4_05" class="fil2" points="14014,9650 14014,8917 25456,8917 25456,9650 "/>
+  <polygon id="setor_4_04" class="fil2" points="14014,10780 14014,10046 25456,10046 25456,10780 "/>
+  <polygon id="setor_4_03" class="fil2" points="14014,11909 14014,11176 25456,11176 25456,11909 "/>
+  <polygon id="setor_4_02" class="fil2" points="14014,13039 14014,12305 25456,12305 25456,13039 "/>
+  <polygon id="setor_4_01_0" class="fil2" points="14014,14169 14014,13435 25456,13435 25456,14169 "/>
+  <polygon id="nicho_muro_03" class="fil2" points="7443,12542 8259,12589 8138,14668 7322,14621 "/>
+  <polygon id="nicho_muro_02" class="fil2" points="7301,14982 8117,15029 7996,17109 7180,17061 "/>
+  <polygon id="nicho_muro_01" class="fil2" points="7159,17422 7975,17470 7854,19549 7038,19501 "/>
+  <polygon id="nicho_barranco_03" class="fil2" points="10969,3227 11787,3227 11787,5310 10969,5310 "/>
+  <polygon id="nicho_barranco_02" class="fil2" points="10969,5671 11787,5671 11787,7754 10969,7754 "/>
+  <polygon id="nicho_barranco_01" class="fil2" points="10969,8116 11787,8116 11787,10199 10969,10199 "/>
+  <polygon id="setor_2_03" class="fil2" points="15206,16285 15206,15552 25456,15552 25456,16285 "/>
+  <polygon id="setor_2_02" class="fil2" points="15206,17415 15206,16681 25456,16681 25456,17415 "/>
+  <polygon id="setor_2_01" class="fil2" points="15206,18545 15206,17811 25456,17811 25456,18545 "/>
   <g transform="matrix(1.2446E-014 -0.469933 0.469933 1.2446E-014 -952.631 32307.7)">
-   <text x="29700" y="21000"  class="fil1 fnt2">Bloco de Nichos</text>
-  </g>
-  <g transform="matrix(1.2446E-014 -0.469933 0.469933 1.2446E-014 648.459 22975.4)">
    <text x="29700" y="21000"  class="fil1 fnt2">Bloco de Nichos</text>
   </g>
   <g transform="matrix(0.469933 0 0 0.469933 14844.4 -4758.51)">
@@ -142,42 +139,56 @@ viewBox="0 0 59400 42000"
    <text x="27522" y="22469"  class="fil1 fnt4">Central</text>
   </g>
   <path class="fil2" d="M27161 6289c-731,-996 -871,-2162 -368,-2747l547 746c-188,409 -66,1053 347,1615 412,562 990,872 1437,815l547 746c-709,304 -1779,-179 -2510,-1175z"/>
-  <polygon class="fil2" points="29465,15156 29465,14422 40076,14422 40076,15156 "/>
-  <polygon class="fil2" points="29465,16285 29465,15552 40076,15552 40076,16285 "/>
-  <polygon class="fil2" points="29465,17415 29465,16681 40076,16681 40076,17415 "/>
-  <polygon class="fil2" points="29465,18545 29465,17811 40076,17811 40076,18545 "/>
-  <polygon class="fil2" points="29465,19674 29465,18941 40076,18941 40076,19674 "/>
+  <polygon id="setor_3_05" class="fil2" points="29465,15156 29465,14422 40076,14422 40076,15156 "/>
+  <polygon id="setor_3_04" class="fil2" points="29465,16285 29465,15552 40076,15552 40076,16285 "/>
+  <polygon id="setor_3_03" class="fil2" points="29465,17415 29465,16681 40076,16681 40076,17415 "/>
+  <polygon id="setor_3_02" class="fil2" points="29465,18545 29465,17811 40076,17811 40076,18545 "/>
+  <polygon id="setor_3_01" class="fil2" points="29465,19674 29465,18941 40076,18941 40076,19674 "/>
   <g transform="matrix(0.469933 0 0 0.469933 -1315.56 7406.95)">
    <text x="29700" y="21000"  class="fil1 fnt2">Setor 2</text>
   </g>
-  <g transform="matrix(0.469933 0 0 0.469933 3230.75 -6955.55)">
+  <g transform="matrix(0.469933 0 0 0.469933 3086.85 -8234.3)">
    <text x="29700" y="21000"  class="fil1 fnt2">Setor 4</text>
   </g>
-  <polygon class="fil2" points="37105,23125 37105,22392 43137,22392 43137,23125 "/>
-  <polygon class="fil2" points="37105,24255 37105,23521 43137,23521 43137,24255 "/>
+  <polygon id="setor_1_02" class="fil2" points="37105,23125 37105,22392 43137,22392 43137,23125 "/>
+  <polygon id="setor_1_01" class="fil2" points="37105,24255 37105,23521 43137,23521 43137,24255 "/>
   <g transform="matrix(0.469933 0 0 0.469933 25139.8 12195.4)">
    <text x="29700" y="21000"  class="fil1 fnt2">Setor 1</text>
   </g>
   <path class="fil4" d="M10027 33776l2863 -984 2818 984 0 1759 -365 0 0 -231c0,-652 -534,-1185 -1186,-1185l0 0c-652,0 -1185,533 -1185,1185l0 231 -209 0 0 -231c0,-652 -533,-1185 -1185,-1185l0 0c-652,0 -1185,533 -1185,1185l0 231 -366 0 0 -1759z"/>
-  <g id="_784671488">
-   <rect class="fil6" x="16979" y="31865" width="146" height="1605"/>
-   <rect class="fil7" x="16378" y="30536" width="1349" height="1605"/>
+  <g id="_0804">
+   <rect class="fil6" x="27437" y="14802" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="27077" y="14008" width="806" height="959"/>
   </g>
-  <g id="_784683168">
-   <rect class="fil6" x="25766" y="28541" width="146" height="1605"/>
-   <rect class="fil7" x="25164" y="27211" width="1349" height="1605"/>
+  <g id="_0805">
+   <rect class="fil6" x="7972" y="22936" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="7612" y="22142" width="806" height="959"/>
   </g>
-  <g id="_784684000">
-   <rect class="fil6" x="35774" y="24373" width="146" height="1605"/>
-   <rect class="fil7" x="35172" y="23044" width="1349" height="1605"/>
+  <g id="_0806">
+   <rect class="fil6" x="15990" y="31344" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="15631" y="30550" width="806" height="959"/>
   </g>
-  <g id="_784673664">
-   <rect class="fil6" x="26645" y="14156" width="146" height="1605"/>
-   <rect class="fil7" x="26044" y="12826" width="1349" height="1605"/>
+  <g id="_0801">
+   <rect class="fil6" x="25795" y="29187" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="25436" y="28393" width="806" height="959"/>
   </g>
-  <g id="_784673856">
-   <rect class="fil6" x="10347" y="21705" width="146" height="1605"/>
-   <rect class="fil7" x="9746" y="20376" width="1349" height="1605"/>
+  <g id="_0802">
+   <rect class="fil6" x="38410" y="24001" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="38051" y="23206" width="806" height="959"/>
   </g>
+  <g id="_0803">
+   <rect class="fil6" x="43928" y="16584" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="43568" y="15789" width="806" height="959"/>
+  </g>
+  <path class="fil2" d="M37534 20310l-1790 0c-1404,0 -2550,1146 -2550,2551l0 3395 1010 -131 -134 -3318c-42,-1038 850,-1700 1674,-1700l1172 0 0 2 1260 0 0 2 1681 0c1041,0 1481,-1233 2683,-1233l927 0 0 -797 -928 0c-1595,0 -2038,1233 -2690,1233l-1325 0 0 -2 -990 0 0 -2z"/>
+  <circle class="fil5" cx="36016" cy="22166" r="609"/>
+  <path class="fil2" d="M9723 24491l0 226 -814 -186 -357 -4162c0,-1041 572,-1428 572,-2630l608 -14262 797 0 -608 14263c0,1595 -551,2036 -551,2820l352 3931 1 0z"/>
+  <g transform="matrix(1.2446E-014 -0.469933 0.469933 1.2446E-014 846.649 22989.2)">
+   <text x="29700" y="21000"  class="fil1 fnt2">Bloco de Nichos</text>
+  </g>
+  <polygon id="setor_4_01_1" class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
+  <polygon id="setor_4_01_2" class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
+  <polygon id="setor_4_10" class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
+  <polygon id="setor_4_11" class="fil2" points="12490,2977 12490,2243 23932,2243 23932,2977 "/>
  </g>
 </svg>

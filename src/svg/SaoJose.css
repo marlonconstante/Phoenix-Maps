@@ -1,10 +1,15 @@
 @charset "UTF-8";
 @font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
-.fil1 {fill:#FEFEFE}
-.fil3 {fill:#D2D3D5}
-.fil2 {fill:#373435}
-.fil4 {fill:#D2E4A1}
-.fil0 {fill:#AEE1F9}
+.fil2 {fill:#FEFEFE}
+.fil6 {fill:#FEFEFE}
+.fil0 {fill:#E6E7E8}
+.fil4 {fill:#D2D3D5}
+.fil3 {fill:#373435}
+.fil7 {fill:#373435}
+.fil8 {fill:#FFF688}
+.fil5 {fill:#D2E4A1}
+.fil1 {fill:#AEE1F9}
+.fnt3 {font-weight:normal;font-size:846.67px;font-family:'Arial'}
 .fnt0 {font-weight:normal;font-size:1351.28px;font-family:'Arial'}
 .fnt1 {font-weight:bold;font-size:1801.67px;font-family:'Arial'}
 .fnt2 {font-style:italic;font-weight:normal;font-size:1351.28px;font-family:'Arial'}

@@ -1,9 +1,12 @@
 @charset "UTF-8";
 @font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
 .fil3 {fill:none}
+.fil6 {fill:#FEFEFE}
 .fil1 {fill:#FEFEFE}
 .fil4 {fill:#D2D3D5}
 .fil5 {fill:#373435}
+.fil7 {fill:#373435}
+.fil8 {fill:#FFF688}
 .fil2 {fill:#CEECFB}
 .fil0 {fill:#AEE1F9}
 .fnt0 {font-weight:normal;font-size:1351.28px;font-family:'Arial'}
