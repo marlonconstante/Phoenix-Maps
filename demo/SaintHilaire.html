@@ -28,11 +28,24 @@
         width: 100%;
         height: 100%;
       }
-      #map svg {
+      #map {
         width: 594px;
         height: 420px;
+      }
+      #map svg {
         -webkit-backface-visibility: initial !important;
         -webkit-transform-origin: 50% 50%;
+      }
+      #myLocation, #arrow {
+        display: none;
+        position: absolute;
+        stroke-width: 1;
+      }
+      #myLocation {
+        stroke: #d08e00;
+      }
+      #arrow {
+        stroke: #0079ff;
       }
     </style>
   </head>
@@ -93,7 +106,7 @@ viewBox="0 0 59400 42000"
    <glyph unicode="l" horiz-adv-x="277"><path d="M71.9988 0l0 716.002 137.004 0 0 -716.002 -137.004 0z"/></glyph>
    <glyph unicode="i" horiz-adv-x="277"><path d="M71.9988 588.999l0 127.003 137.004 0 0 -127.003 -137.004 0zm0 -588.999l0 519.002 137.004 0 0 -519.002 -137.004 0z"/></glyph>
   </font>
-  <font id="FontID0" horiz-adv-x="739" font-variant="normal" style="fill-rule:nonzero" font-style="normal" font-weight="700">
+  <font id="FontID0" horiz-adv-x="739" font-variant="normal" style="fill-rule:nonzero" font-weight="700">
 	<!--<font-face 
 		font-family="Century Gothic">
 	</font-face>-->
@@ -137,7 +150,7 @@ viewBox="0 0 59400 42000"
   <g transform="matrix(0.469933 0 0 0.469933 8352.12 21293.3)">
    <text x="29700" y="22510"  class="fil1 fnt2">Prédio/ Cafeteria</text>
   </g>
-  <g id="_711802992">
+  <g id="setor_0_00">
    <path class="fil4" d="M20047 27292l11583 0 0 2854 -4535 0 0 -1453 -2330 0 -183 0 0 1453 -1924 0 0 -1453 -707 0 0 1453 -1904 0c0,-2137 0,-717 0,-2854z"/>
    <polygon class="fil4" points="18702,27479 25895,25921 32975,27479 "/>
   </g>
@@ -151,29 +164,26 @@ viewBox="0 0 59400 42000"
   <g transform="matrix(0.469933 0 0 0.469933 19789.8 4159.16)">
    <text x="29700" y="21000"  class="fil1 fnt2">Setor 3</text>
   </g>
-  <polygon class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
-  <polygon class="fil2" points="12490,5132 12490,4398 23932,4398 23932,5132 "/>
-  <polygon class="fil2" points="12490,6261 12490,5528 23932,5528 23932,6261 "/>
-  <polygon class="fil2" points="12998,7391 12998,6657 24440,6657 24440,7391 "/>
-  <polygon class="fil2" points="13506,8521 13506,7787 24948,7787 24948,8521 "/>
-  <polygon class="fil2" points="14014,9650 14014,8917 25456,8917 25456,9650 "/>
-  <polygon class="fil2" points="14014,10780 14014,10046 25456,10046 25456,10780 "/>
-  <polygon class="fil2" points="14014,11909 14014,11176 25456,11176 25456,11909 "/>
-  <polygon class="fil2" points="14014,13039 14014,12305 25456,12305 25456,13039 "/>
-  <polygon class="fil2" points="14014,14169 14014,13435 25456,13435 25456,14169 "/>
-  <polygon class="fil2" points="7443,12542 8259,12589 8138,14668 7322,14621 "/>
-  <polygon class="fil2" points="7301,14982 8117,15029 7996,17109 7180,17061 "/>
-  <polygon class="fil2" points="7159,17422 7975,17470 7854,19549 7038,19501 "/>
-  <polygon class="fil2" points="10969,3227 11787,3227 11787,5310 10969,5310 "/>
-  <polygon class="fil2" points="10969,5671 11787,5671 11787,7754 10969,7754 "/>
-  <polygon class="fil2" points="10969,8116 11787,8116 11787,10199 10969,10199 "/>
-  <polygon class="fil2" points="15206,16285 15206,15552 25456,15552 25456,16285 "/>
-  <polygon class="fil2" points="15206,17415 15206,16681 25456,16681 25456,17415 "/>
-  <polygon class="fil2" points="15206,18545 15206,17811 25456,17811 25456,18545 "/>
+  <polygon id="setor_4_01" class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
+  <polygon id="setor_4_09" class="fil2" points="12490,5132 12490,4398 23932,4398 23932,5132 "/>
+  <polygon id="setor_4_08" class="fil2" points="12490,6261 12490,5528 23932,5528 23932,6261 "/>
+  <polygon id="setor_4_07" class="fil2" points="12998,7391 12998,6657 24440,6657 24440,7391 "/>
+  <polygon id="setor_4_06" class="fil2" points="13506,8521 13506,7787 24948,7787 24948,8521 "/>
+  <polygon id="setor_4_05" class="fil2" points="14014,9650 14014,8917 25456,8917 25456,9650 "/>
+  <polygon id="setor_4_04" class="fil2" points="14014,10780 14014,10046 25456,10046 25456,10780 "/>
+  <polygon id="setor_4_03" class="fil2" points="14014,11909 14014,11176 25456,11176 25456,11909 "/>
+  <polygon id="setor_4_02" class="fil2" points="14014,13039 14014,12305 25456,12305 25456,13039 "/>
+  <polygon id="setor_4_01_0" class="fil2" points="14014,14169 14014,13435 25456,13435 25456,14169 "/>
+  <polygon id="nicho_muro_03" class="fil2" points="7443,12542 8259,12589 8138,14668 7322,14621 "/>
+  <polygon id="nicho_muro_02" class="fil2" points="7301,14982 8117,15029 7996,17109 7180,17061 "/>
+  <polygon id="nicho_muro_01" class="fil2" points="7159,17422 7975,17470 7854,19549 7038,19501 "/>
+  <polygon id="nicho_barranco_03" class="fil2" points="10969,3227 11787,3227 11787,5310 10969,5310 "/>
+  <polygon id="nicho_barranco_02" class="fil2" points="10969,5671 11787,5671 11787,7754 10969,7754 "/>
+  <polygon id="nicho_barranco_01" class="fil2" points="10969,8116 11787,8116 11787,10199 10969,10199 "/>
+  <polygon id="setor_2_03" class="fil2" points="15206,16285 15206,15552 25456,15552 25456,16285 "/>
+  <polygon id="setor_2_02" class="fil2" points="15206,17415 15206,16681 25456,16681 25456,17415 "/>
+  <polygon id="setor_2_01" class="fil2" points="15206,18545 15206,17811 25456,17811 25456,18545 "/>
   <g transform="matrix(1.2446E-014 -0.469933 0.469933 1.2446E-014 -952.631 32307.7)">
-   <text x="29700" y="21000"  class="fil1 fnt2">Bloco de Nichos</text>
-  </g>
-  <g transform="matrix(1.2446E-014 -0.469933 0.469933 1.2446E-014 648.459 22975.4)">
    <text x="29700" y="21000"  class="fil1 fnt2">Bloco de Nichos</text>
   </g>
   <g transform="matrix(0.469933 0 0 0.469933 14844.4 -4758.51)">
@@ -183,44 +193,117 @@ viewBox="0 0 59400 42000"
    <text x="27522" y="22469"  class="fil1 fnt4">Central</text>
   </g>
   <path class="fil2" d="M27161 6289c-731,-996 -871,-2162 -368,-2747l547 746c-188,409 -66,1053 347,1615 412,562 990,872 1437,815l547 746c-709,304 -1779,-179 -2510,-1175z"/>
-  <polygon class="fil2" points="29465,15156 29465,14422 40076,14422 40076,15156 "/>
-  <polygon class="fil2" points="29465,16285 29465,15552 40076,15552 40076,16285 "/>
-  <polygon class="fil2" points="29465,17415 29465,16681 40076,16681 40076,17415 "/>
-  <polygon class="fil2" points="29465,18545 29465,17811 40076,17811 40076,18545 "/>
-  <polygon class="fil2" points="29465,19674 29465,18941 40076,18941 40076,19674 "/>
+  <polygon id="setor_3_05" class="fil2" points="29465,15156 29465,14422 40076,14422 40076,15156 "/>
+  <polygon id="setor_3_04" class="fil2" points="29465,16285 29465,15552 40076,15552 40076,16285 "/>
+  <polygon id="setor_3_03" class="fil2" points="29465,17415 29465,16681 40076,16681 40076,17415 "/>
+  <polygon id="setor_3_02" class="fil2" points="29465,18545 29465,17811 40076,17811 40076,18545 "/>
+  <polygon id="setor_3_01" class="fil2" points="29465,19674 29465,18941 40076,18941 40076,19674 "/>
   <g transform="matrix(0.469933 0 0 0.469933 -1315.56 7406.95)">
    <text x="29700" y="21000"  class="fil1 fnt2">Setor 2</text>
   </g>
-  <g transform="matrix(0.469933 0 0 0.469933 3230.75 -6955.55)">
+  <g transform="matrix(0.469933 0 0 0.469933 3086.85 -8234.3)">
    <text x="29700" y="21000"  class="fil1 fnt2">Setor 4</text>
   </g>
-  <polygon class="fil2" points="37105,23125 37105,22392 43137,22392 43137,23125 "/>
-  <polygon class="fil2" points="37105,24255 37105,23521 43137,23521 43137,24255 "/>
+  <polygon id="setor_1_02" class="fil2" points="37105,23125 37105,22392 43137,22392 43137,23125 "/>
+  <polygon id="setor_1_01" class="fil2" points="37105,24255 37105,23521 43137,23521 43137,24255 "/>
   <g transform="matrix(0.469933 0 0 0.469933 25139.8 12195.4)">
    <text x="29700" y="21000"  class="fil1 fnt2">Setor 1</text>
   </g>
   <path class="fil4" d="M10027 33776l2863 -984 2818 984 0 1759 -365 0 0 -231c0,-652 -534,-1185 -1186,-1185l0 0c-652,0 -1185,533 -1185,1185l0 231 -209 0 0 -231c0,-652 -533,-1185 -1185,-1185l0 0c-652,0 -1185,533 -1185,1185l0 231 -366 0 0 -1759z"/>
-  <g id="_784671488">
-   <rect class="fil6" x="16979" y="31865" width="146" height="1605"/>
-   <rect class="fil7" x="16378" y="30536" width="1349" height="1605"/>
+  <g id="_0804">
+   <rect class="fil6" x="27437" y="14802" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="27077" y="14008" width="806" height="959"/>
   </g>
-  <g id="_784683168">
-   <rect class="fil6" x="25766" y="28541" width="146" height="1605"/>
-   <rect class="fil7" x="25164" y="27211" width="1349" height="1605"/>
+  <g id="_0805">
+   <rect class="fil6" x="7972" y="22936" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="7612" y="22142" width="806" height="959"/>
   </g>
-  <g id="_784684000">
-   <rect class="fil6" x="35774" y="24373" width="146" height="1605"/>
-   <rect class="fil7" x="35172" y="23044" width="1349" height="1605"/>
+  <g id="_0806">
+   <rect class="fil6" x="15990" y="31344" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="15631" y="30550" width="806" height="959"/>
   </g>
-  <g id="_784673664">
-   <rect class="fil6" x="26645" y="14156" width="146" height="1605"/>
-   <rect class="fil7" x="26044" y="12826" width="1349" height="1605"/>
+  <g id="_0801">
+   <rect class="fil6" x="25795" y="29187" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="25436" y="28393" width="806" height="959"/>
   </g>
-  <g id="_784673856">
-   <rect class="fil6" x="10347" y="21705" width="146" height="1605"/>
-   <rect class="fil7" x="9746" y="20376" width="1349" height="1605"/>
+  <g id="_0802">
+   <rect class="fil6" x="38410" y="24001" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="38051" y="23206" width="806" height="959"/>
   </g>
+  <g id="_0803">
+   <rect class="fil6" x="43928" y="16584" width="87.1263" height="959.065"/>
+   <rect class="fil7" x="43568" y="15789" width="806" height="959"/>
+  </g>
+  <path class="fil2" d="M37534 20310l-1790 0c-1404,0 -2550,1146 -2550,2551l0 3395 1010 -131 -134 -3318c-42,-1038 850,-1700 1674,-1700l1172 0 0 2 1260 0 0 2 1681 0c1041,0 1481,-1233 2683,-1233l927 0 0 -797 -928 0c-1595,0 -2038,1233 -2690,1233l-1325 0 0 -2 -990 0 0 -2z"/>
+  <circle class="fil5" cx="36016" cy="22166" r="609"/>
+  <path class="fil2" d="M9723 24491l0 226 -814 -186 -357 -4162c0,-1041 572,-1428 572,-2630l608 -14262 797 0 -608 14263c0,1595 -551,2036 -551,2820l352 3931 1 0z"/>
+  <g transform="matrix(1.2446E-014 -0.469933 0.469933 1.2446E-014 846.649 22989.2)">
+   <text x="29700" y="21000"  class="fil1 fnt2">Bloco de Nichos</text>
+  </g>
+  <polygon id="setor_4_01_1" class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
+  <polygon id="setor_4_01_2" class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
+  <polygon id="setor_4_10" class="fil2" points="12490,4002 12490,3269 23932,3269 23932,4002 "/>
+  <polygon id="setor_4_11" class="fil2" points="12490,2977 12490,2243 23932,2243 23932,2977 "/>
  </g>
+</svg>
+
+      <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" id="arrow" width="36px" height="40.5px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 40 45" enable-background="new 0 0 40 45" xml:space="preserve">
+<g id="Shape_3">
+	<g>
+		<path fill="#5eaaff" d="M24.6,26.5l4.2-24.9c0,0-4.5,2.5-9.1,2.5c-4,0-8.3-2.5-8.3-2.5l4.2,24.9L1.1,24.8l19,18.1l19-18.1
+			L24.6,26.5z"/>
+	</g>
+</g>
+</svg>
+
+      <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" id="myLocation" width="100px" height="65px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 200 130" enable-background="new 0 0 200 130" xml:space="preserve">
+<g id="Shape_3">
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="#FBAD18" d="M109.2,91.1l8.4-49.8c0,0-8.9,5.1-18.3,5.1
+			c-7.9,0-16.6-5.1-16.6-5.1l8.4,49.8l-28.9-3.4l38,36.2l38-36.2L109.2,91.1z"/>
+	</g>
+</g>
+<g>
+	<path fill="#FBAD18" d="M5,7.8h3.8l2.9,10.3c0.7,2.3,1.1,4.3,1.8,6.7h0.1c0.7-2.3,1.2-4.3,1.8-6.7l2.8-10.3H22l-6.3,20.5h-4.3
+		L5,7.8z"/>
+	<path fill="#FBAD18" d="M29.9,12.5c3.8,0,7.3,2.9,7.3,8.1c0,5.1-3.5,8-7.3,8c-3.8,0-7.3-2.9-7.3-8C22.6,15.5,26.1,12.5,29.9,12.5z
+		 M29.9,25.7c2.3,0,3.6-2,3.6-5.1c0-3.1-1.4-5.1-3.6-5.1s-3.6,2-3.6,5.1C26.3,23.7,27.6,25.7,29.9,25.7z"/>
+	<path fill="#FBAD18" d="M47.4,12.5c2,0,3.5,0.8,4.5,1.8l-1.7,2.3c-0.8-0.7-1.6-1.1-2.6-1.1c-2.5,0-4.2,2-4.2,5.1
+		c0,3.1,1.7,5.1,4.1,5.1c1.3,0,2.3-0.6,3.2-1.3l1.5,2.3c-1.4,1.3-3.3,2-5,2c-4.2,0-7.4-2.9-7.4-8C39.8,15.5,43.3,12.5,47.4,12.5z"/>
+	<path fill="#FBAD18" d="M60.5,12.5c4.2,0,6.3,3,6.3,7.3c0,0.7-0.1,1.3-0.2,1.7H57c0.3,2.8,2.1,4.3,4.5,4.3c1.3,0,2.4-0.4,3.6-1.1
+		l1.2,2.3c-1.5,1-3.3,1.7-5.3,1.7c-4.3,0-7.6-3-7.6-8C53.5,15.6,56.9,12.5,60.5,12.5z M59.1,5.8H62l3,4.6h-2.5l-1.9-2.7h-0.1
+		l-1.9,2.7h-2.5L59.1,5.8z M63.7,19.2c0-2.4-1-3.9-3.1-3.9c-1.8,0-3.4,1.3-3.7,3.9H63.7z"/>
+	<path fill="#FBAD18" d="M82.8,12.5c4.2,0,6.3,3,6.3,7.3c0,0.7-0.1,1.3-0.2,1.7h-9.8c0.3,2.8,2.1,4.3,4.5,4.3c1.3,0,2.4-0.4,3.6-1.1
+		l1.2,2.3c-1.5,1-3.3,1.7-5.3,1.7c-4.3,0-7.6-3-7.6-8C75.7,15.6,79.2,12.5,82.8,12.5z M86,19.2c0-2.4-1-3.9-3.1-3.9
+		c-1.8,0-3.4,1.3-3.7,3.9H86z"/>
+	<path fill="#FBAD18" d="M92.7,24.2c1.4,1.1,2.7,1.7,4.3,1.7c1.7,0,2.4-0.8,2.4-1.8c0-1.3-1.7-1.8-3.3-2.5c-2-0.8-4.3-1.9-4.3-4.5
+		c0-2.7,2.2-4.6,5.6-4.6c2.1,0,3.8,0.9,5.1,1.8l-1.7,2.2c-1.1-0.8-2.2-1.3-3.4-1.3c-1.5,0-2.3,0.7-2.3,1.7c0,1.2,1.5,1.7,3.2,2.3
+		c2.1,0.8,4.4,1.8,4.4,4.7c0,2.6-2.1,4.8-6,4.8c-2.1,0-4.3-0.9-5.8-2.1L92.7,24.2z"/>
+	<path fill="#FBAD18" d="M106.6,15.8h-2.2v-2.7l2.4-0.2l0.4-4.2h3v4.2h3.9v2.8h-3.9v7.3c0,1.8,0.7,2.7,2.2,2.7
+		c0.5,0,1.2-0.2,1.6-0.3l0.6,2.7c-0.8,0.3-1.9,0.6-3.1,0.6c-3.6,0-4.9-2.3-4.9-5.6V15.8z"/>
+	<path fill="#FBAD18" d="M125.3,18.5c0-1.6-0.7-3-2.8-3c-1.5,0-3,0.7-4.3,1.5l-1.3-2.4c1.7-1.1,3.8-2,6.3-2c3.8,0,5.7,2.3,5.7,6.6
+		v9.1h-2.9l-0.3-1.7h-0.1c-1.4,1.2-2.9,2.1-4.8,2.1c-2.7,0-4.6-1.8-4.6-4.5C116.2,20.9,119,19.1,125.3,18.5z M121.9,25.8
+		c1.3,0,2.2-0.6,3.3-1.7v-3.4c-4.2,0.5-5.5,1.6-5.5,3.2C119.7,25.2,120.6,25.8,121.9,25.8z M123.6,10.4h-2.7l2.8-4.6h3.6L123.6,10.4
+		z"/>
+	<path fill="#FBAD18" d="M148,18.5c0-1.6-0.7-3-2.8-3c-1.5,0-3,0.7-4.3,1.5l-1.3-2.4c1.7-1.1,3.8-2,6.3-2c3.8,0,5.7,2.3,5.7,6.6v9.1
+		h-2.9l-0.3-1.7h-0.1c-1.4,1.2-2.9,2.1-4.8,2.1c-2.7,0-4.6-1.8-4.6-4.5C139,20.9,141.8,19.1,148,18.5z M144.7,25.8
+		c1.3,0,2.2-0.6,3.3-1.7v-3.4c-4.2,0.5-5.5,1.6-5.5,3.2C142.5,25.2,143.4,25.8,144.7,25.8z"/>
+	<path fill="#FBAD18" d="M161.6,12.5c1.7,0,3,0.6,4.3,1.8h0.1l0.3-1.5h2.8v21.4h-3.6v-5l0.1-2.5c-1.1,1.1-2.7,1.9-4.2,1.9
+		c-3.8,0-6.3-3-6.3-8C155.1,15.6,158.2,12.5,161.6,12.5z M162.3,25.7c1.2,0,2.2-0.5,3.2-1.7v-7.2c-1.1-0.9-2.1-1.3-3.1-1.3
+		c-2,0-3.6,1.8-3.6,5.1C158.8,23.9,160,25.7,162.3,25.7z"/>
+	<path fill="#FBAD18" d="M173.4,12.9h3.6v9.2c0,2.5,0.7,3.5,2.4,3.5c1.3,0,2.3-0.6,3.4-2.1V12.9h3.6v15.4h-2.9l-0.3-2.3h-0.1
+		c-1.3,1.6-2.8,2.6-4.9,2.6c-3.3,0-4.7-2.2-4.7-6.1V12.9z"/>
+	<path fill="#FBAD18" d="M190.5,8.2c0-1.2,0.9-2.1,2.2-2.1c1.3,0,2.2,0.8,2.2,2.1c0,1.2-0.9,2-2.2,2C191.5,10.2,190.5,9.4,190.5,8.2
+		z M191,12.9h3.6v15.4H191V12.9z"/>
+</g>
 </svg>
 
     </div>
@@ -254,15 +337,15 @@ viewBox="0 0 59400 42000"
 
       // Utilities to manipulate svg elements
       var SvgUtils = {
-        getSvgSize: function() {
-            var $svg = $("svg");
+        getSvgSize: function(element) {
+            var $svg = $(element).closest("svg");
             return {
               width: $svg.width(),
               height: $svg.height()
             };
         },
-        getSvgBoxSize: function() {
-          return $("svg")[0].getBBox();
+        getSvgBoxSize: function(element) {
+          return $(element).closest("svg")[0].getBBox();
         },
         getCenterX: function(element) {
           if (element) {
@@ -279,36 +362,51 @@ viewBox="0 0 59400 42000"
           return 0;
         },
         getX: function(element) {
-          return (element.getBBox().x * SvgUtils.getSvgSize().width) / SvgUtils.getSvgBoxSize().width;
+          return (element.getBBox().x * SvgUtils.getSvgSize(element).width) / SvgUtils.getSvgBoxSize(element).width;
         },
         getY: function(element) {
-          return (element.getBBox().y * SvgUtils.getSvgSize().height) / SvgUtils.getSvgBoxSize().height;
+          return (element.getBBox().y * SvgUtils.getSvgSize(element).height) / SvgUtils.getSvgBoxSize(element).height;
         },
         getWidth: function(element) {
-          return (element.getBBox().width * SvgUtils.getSvgSize().width) / SvgUtils.getSvgBoxSize().width;
+          return (element.getBBox().width * SvgUtils.getSvgSize(element).width) / SvgUtils.getSvgBoxSize(element).width;
         },
         getHeight: function(element) {
-          return (element.getBBox().height * SvgUtils.getSvgSize().height) / SvgUtils.getSvgBoxSize().height;
+          return (element.getBBox().height * SvgUtils.getSvgSize(element).height) / SvgUtils.getSvgBoxSize(element).height;
         },
-        zoomAt: function(id) {
-          var $element = $("#" + id);
-          var $svg = $("svg");
-          var exists = $element.length;
+        showAndMove: function(idElement, IdReference, horizontalMiddle, verticalMiddle) {
+          var $element = $("#" + idElement);
+          var $reference = $("#" + IdReference);
+          if ($reference.length > 0) {
+            $element.css({
+              display: "block",
+              left: SvgUtils.getX($reference[0]) + (horizontalMiddle ? SvgUtils.getWidth($reference[0]) / 2 : 0) - $element.width() / 2,
+              top: SvgUtils.getY($reference[0]) + (verticalMiddle ? SvgUtils.getHeight($reference[0]) / 2 : 0) - $element.height()
+            });
+          }
+        },
+        zoomAt: function(scale, locationCode, unitCode) {
+          var $unit = $("#" + unitCode);
+          $unit.css("fill", "#5eaaff");
+          $unit.css("stroke", "#0079ff");
+          $unit.css("stroke-width", "80");
 
-          if (exists)
+          SvgUtils.showAndMove("myLocation", locationCode, true, true);
+          SvgUtils.showAndMove("arrow", unitCode, true, false);
+
+          var $map = $("#map");
+          if (scale == 1)
           {
-            $element.css("fill", "red");
-          } else {
-            var x = ($svg.width() - $("body").width()) / 2;
-            $svg.panzoom("pan", -x, 0);
+            var x = ($map.width() - $("body").width()) / 2;
+            $map.panzoom("pan", -x, 0);
           }
 
-          $svg.panzoom("zoom", exists ? 3 : 1,
+          var $location = $("#" + locationCode);
+          $map.panzoom("zoom", scale,
             {
               animate: true,
               focal: {
-                clientX: SvgUtils.getCenterX($element[0]),
-                clientY: SvgUtils.getCenterY($element[0])
+                clientX: SvgUtils.getCenterX($location[0]),
+                clientY: SvgUtils.getCenterY($location[0])
               }
             }
           );
@@ -316,14 +414,14 @@ viewBox="0 0 59400 42000"
       };
 
       (function() {
-        var $panzoom = $("svg").panzoom({
+        $("#map").panzoom({
           maxScale: 5,
           minScale: 1,
           increment: 0.5,
           contain: "invert"
         });
 
-        SvgUtils.zoomAt(QueryString.id);
+        SvgUtils.zoomAt(Number(QueryString.scale || 1), QueryString.locationCode || "", QueryString.unitCode || "");
       })();
     </script>
 
