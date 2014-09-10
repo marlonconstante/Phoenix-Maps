@@ -39,7 +39,7 @@ var createSvgViewer = function(name, size) {
  */
 gulp.task('build', ['copyLibs'], function() {
   createSvgViewer('CristoRei');
-  createSvgViewer('MemorialColina', { width: '420px', height: '594px' });
+  createSvgViewer('MemorialColina', { width: '420px', height: '658px' });
   createSvgViewer('SaintHilaire');
   createSvgViewer('SaoJose');
   createSvgViewer('SaoVicente');
