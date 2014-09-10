@@ -828,9 +828,33 @@ viewBox="0 0 72023 49882"
             });
           }
         },
+        mobile: {
+          Android: function() {
+              return /Android/i.test(navigator.userAgent);
+          },
+          BlackBerry: function() {
+              return /BlackBerry/i.test(navigator.userAgent);
+          },
+          iOS: function() {
+              return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+          },
+          Windows: function() {
+              return /IEMobile/i.test(navigator.userAgent);
+          },
+          any: function() {
+              return (SvgUtils.mobile.Android() || SvgUtils.mobile.BlackBerry() || SvgUtils.mobile.iOS() || SvgUtils.mobile.Windows());
+          }
+        },
         minScale: function() {
           var bodyHeight = $("body").height();
           var mapHeight = $("#map").height();
+
+          if (SvgUtils.mobile.iOS()) {
+            bodyHeight -= 64;
+          } else if (SvgUtils.mobile.Android()) {
+            bodyHeight -= 48;
+          }
+
           return 1 + (bodyHeight - mapHeight) * 100 / (bodyHeight * 100);
         },
         zoomAt: function(element, scale, locationCode, sectorCode) {
@@ -843,6 +867,8 @@ viewBox="0 0 72023 49882"
           SvgUtils.showAndMove("arrow", sectorCode, true, false);
 
           var $map = $("#map");
+
+          scale = element ? scale : 1;
           if (scale == 1)
           {
             var x = ($map.width() - $("body").width()) / 2;
