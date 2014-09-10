@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <style>
       @charset "UTF-8";
 @font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
@@ -828,7 +828,12 @@ viewBox="0 0 72023 49882"
             });
           }
         },
-        zoomAt: function(scale, locationCode, sectorCode) {
+        minScale: function() {
+          var bodyHeight = $("body").height();
+          var mapHeight = $("#map").height();
+          return 1 + (bodyHeight - mapHeight) * 100 / (bodyHeight * 100);
+        },
+        zoomAt: function(element, scale, locationCode, sectorCode) {
           var $sector = $("#" + sectorCode);
           $sector.css("fill", "#5eaaff");
           $sector.css("stroke", "#0079ff");
@@ -844,13 +849,12 @@ viewBox="0 0 72023 49882"
             $map.panzoom("pan", -x, 0);
           }
 
-          var $location = $("#" + locationCode);
           $map.panzoom("zoom", scale,
             {
               animate: true,
               focal: {
-                clientX: SvgUtils.getCenterX($location[0], scale),
-                clientY: SvgUtils.getCenterY($location[0], scale)
+                clientX: SvgUtils.getCenterX(element, scale),
+                clientY: SvgUtils.getCenterY(element, scale)
               }
             }
           );
@@ -860,12 +864,13 @@ viewBox="0 0 72023 49882"
       (function() {
         $("#map").panzoom({
           maxScale: 5,
-          minScale: 1,
+          minScale: SvgUtils.minScale(),
           increment: 0.5,
           contain: "invert"
         });
 
-        SvgUtils.zoomAt(Number(QueryString.scale || 1), QueryString.locationCode || "", QueryString.sectorCode || "");
+        var element = $("#" + QueryString.zoomIn)[0];
+        SvgUtils.zoomAt(element, Number(QueryString.scale || 1), QueryString.locationCode || "", QueryString.sectorCode || "");
       })();
     </script>
 
