@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta name="viewport" content="minimum-scale=1">
     <style>
       @charset "UTF-8";
 @font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
@@ -22,14 +22,12 @@
 
       html, body, #map {
         margin: 0;
-        width: 100%;
-        height: 100%;
-      }
-      #map {
         width: 594px;
         height: 420px;
+      }
+      #map {
         -webkit-backface-visibility: initial !important;
-        -webkit-transform-origin: 50% 50%;
+        -webkit-transform-origin: 100% 100%;
       }
       #myLocation, #arrow {
         display: none;
@@ -966,8 +964,6 @@ viewBox="0 0 59400 42000"
     </div>
 
     <script src="lib/jquery.js"></script>
-    <script src="lib/jquery.panzoom.js"></script>
-    <script src="lib/jquery.mousewheel.js"></script>
     <script>
       var QueryString = function () {
         // This function is anonymous, is executed immediately and
@@ -992,6 +988,27 @@ viewBox="0 0 59400 42000"
         return query_string;
       }();
 
+      // Represents a mobile entity
+      var Mobile = {
+        width: 0,
+        height: 0,
+        Android: function() {
+            return /Android/i.test(navigator.userAgent);
+        },
+        BlackBerry: function() {
+            return /BlackBerry/i.test(navigator.userAgent);
+        },
+        iOS: function() {
+            return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        },
+        Windows: function() {
+            return /IEMobile/i.test(navigator.userAgent);
+        },
+        any: function() {
+            return (Mobile.Android() || Mobile.BlackBerry() || Mobile.iOS() || Mobile.Windows());
+        }
+      };
+
       // Utilities to manipulate svg elements
       var SvgUtils = {
         getSvgSize: function(element) {
@@ -1006,17 +1023,19 @@ viewBox="0 0 59400 42000"
         },
         getCenterX: function(element, scale) {
           if (element) {
-            var x = SvgUtils.getX(element);
-            x = x + (x - $("#map").width() / 2);
-            return x + ($("#map").width() - $("body").width()) / scale;
+            var x = SvgUtils.getX(element) + SvgUtils.getWidth(element) / 2;
+            x -= Mobile.width / scale;
+            x *= scale;
+            return x + (Mobile.width / 2);
           }
           return 0;
         },
         getCenterY: function(element, scale) {
           if (element) {
-            var y = SvgUtils.getY(element);
-            y = y + (y - $("#map").height() / 2);
-            return y + ($("#map").height() - $("body").height()) / scale;
+            var y = SvgUtils.getY(element) + SvgUtils.getHeight(element) / 2;
+            y -= Mobile.height / scale;
+            y *= scale;
+            return y + (Mobile.height / 2);
           }
           return 0;
         },
@@ -1043,36 +1062,7 @@ viewBox="0 0 59400 42000"
             });
           }
         },
-        mobile: {
-          Android: function() {
-              return /Android/i.test(navigator.userAgent);
-          },
-          BlackBerry: function() {
-              return /BlackBerry/i.test(navigator.userAgent);
-          },
-          iOS: function() {
-              return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-          },
-          Windows: function() {
-              return /IEMobile/i.test(navigator.userAgent);
-          },
-          any: function() {
-              return (SvgUtils.mobile.Android() || SvgUtils.mobile.BlackBerry() || SvgUtils.mobile.iOS() || SvgUtils.mobile.Windows());
-          }
-        },
-        minScale: function() {
-          var bodyHeight = $("body").height();
-          var mapHeight = $("#map").height();
-
-          if (SvgUtils.mobile.iOS()) {
-            bodyHeight -= 64;
-          } else if (SvgUtils.mobile.Android()) {
-            bodyHeight -= 48;
-          }
-
-          return 1 + (bodyHeight - mapHeight) * 100 / (bodyHeight * 100);
-        },
-        zoomAt: function(element, scale, locationCode, sectorCode) {
+        zoomAt: function(element, locationCode, sectorCode) {
           var $sector = $("#" + sectorCode);
           $sector.css("fill", "#5eaaff");
           $sector.css("stroke", "#0079ff");
@@ -1082,37 +1072,38 @@ viewBox="0 0 59400 42000"
           SvgUtils.showAndMove("arrow", sectorCode, true, false);
 
           var $map = $("#map");
+          var width = $map.width();
+          var height = $map.height();
 
-          scale = element ? scale : 1;
+          var scale = element ? 1.5 : 1;
+
+          $("html").css({
+            zoom: scale * 100 + "%"
+          });
+
+          $("meta[name=viewport]").attr("content", "minimum-scale=" + (1 / scale));
+
           if (scale == 1)
           {
-            var x = ($map.width() - $("body").width()) / 2;
-            $map.panzoom("pan", -x, 0);
+            var x = ($map.width() - Mobile.width) / 2;
+            var y = ($map.height() - Mobile.height) / 2;
+            window.scrollTo(x, y);
+          } else {
+            window.scrollTo(SvgUtils.getCenterX(element, scale), SvgUtils.getCenterY(element, scale));
           }
-
-          $map.panzoom("zoom", scale,
-            {
-              animate: true,
-              focal: {
-                clientX: SvgUtils.getCenterX(element, scale),
-                clientY: SvgUtils.getCenterY(element, scale)
-              }
-            }
-          );
         }
       };
 
-      (function() {
-        $("#map").panzoom({
-          maxScale: 5,
-          minScale: SvgUtils.minScale(),
-          increment: 0.5,
-          contain: "invert"
-        });
+      Mobile.width = Number(QueryString.width) || $("body").width();
+      Mobile.height = Number(QueryString.height) || $("body").height();
 
-        var element = $("#" + QueryString.zoomIn)[0];
-        SvgUtils.zoomAt(element, Number(QueryString.scale || 1), QueryString.locationCode || "", QueryString.sectorCode || "");
-      })();
+      $("html, body, #map").css({
+        width: $("#map").width() * Mobile.height / $("#map").height(),
+        height: Mobile.height
+      });
+
+      var element = $("#" + QueryString.zoomIn)[0];
+      SvgUtils.zoomAt(element, QueryString.locationCode || "", QueryString.sectorCode || "");
     </script>
 
   </body>
