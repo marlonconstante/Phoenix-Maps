@@ -17,7 +17,7 @@
         -webkit-backface-visibility: initial !important;
         -webkit-transform-origin: 100% 100%;
       }
-      #myLocation, #arrow {
+      #myLocation, #pin {
         display: none;
         position: absolute;
         stroke-width: 0.5;
@@ -25,7 +25,7 @@
       #myLocation {
         stroke: #d08e00;
       }
-      #arrow {
+      #pin {
         stroke: #0060cb;
       }
     </style>
@@ -34,7 +34,7 @@
   <body>
     <div id="map">
       @@include('./src/svg/%name%.svg')
-      @@include('./src/svg/arrow.svg')
+      @@include('./src/svg/pin.svg')
       @@include('./src/svg/myLocation.svg')
     </div>
 
@@ -144,7 +144,7 @@
           $sector.css("stroke-width", "80");
 
           SvgUtils.showAndMove("myLocation", locationCode, true, true);
-          SvgUtils.showAndMove("arrow", sectorCode, true, false);
+          SvgUtils.showAndMove("pin", sectorCode, true, false);
 
           var scale = element ? 1.5 : 1;
           $("html").css({
