@@ -13,6 +13,7 @@
         height: %height%;
       }
       #map {
+        opacity: 0;
         -webkit-backface-visibility: initial !important;
         -webkit-transform-origin: 100% 100%;
       }
@@ -145,20 +146,15 @@
           SvgUtils.showAndMove("myLocation", locationCode, true, true);
           SvgUtils.showAndMove("arrow", sectorCode, true, false);
 
-          var $map = $("#map");
-          var width = $map.width();
-          var height = $map.height();
-
           var scale = element ? 1.5 : 1;
-
           $("html").css({
             zoom: scale * 100 + "%"
           });
-
           $("meta[name=viewport]").attr("content", "minimum-scale=" + (1 / scale));
 
           if (scale == 1)
           {
+            var $map = $("#map");
             var x = ($map.width() - Mobile.width) / 2;
             var y = ($map.height() - Mobile.height) / 2;
             window.scrollTo(x, y);
@@ -168,16 +164,37 @@
         }
       };
 
-      Mobile.width = Number(QueryString.width) || $("body").width();
-      Mobile.height = Number(QueryString.height) || $("body").height();
+      // Main entrance
+      var Main = {
+        init: function() {
+          Mobile.width = Number(QueryString.width) || $("body").width();
+          Mobile.height = Number(QueryString.height) || $("body").height();
 
-      $("html, body, #map").css({
-        width: $("#map").width() * Mobile.height / $("#map").height(),
-        height: Mobile.height
-      });
+          var $map = $("#map");
+          var width = $map.width() * Mobile.height / $map.height();
+          var height = $map.height() * Mobile.width / $map.width();
 
-      var element = $("#" + QueryString.zoomIn)[0];
-      SvgUtils.zoomAt(element, QueryString.locationCode || "", QueryString.sectorCode || "");
+          if (width > Mobile.width)
+          {
+            $("html, body, #map").css({
+              width: width,
+              height: Mobile.height
+            });
+          } else {
+            $("html, body, #map").css({
+              width: Mobile.width,
+              height: height
+            });
+          }
+
+          var element = $("#" + QueryString.zoomIn)[0];
+          SvgUtils.zoomAt(element, QueryString.locationCode || "", QueryString.sectorCode || "");
+
+          $map.fadeTo("slow", 1);
+        }
+      };
+
+      Main.init();
     </script>
 
   </body>
