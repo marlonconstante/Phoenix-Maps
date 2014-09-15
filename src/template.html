@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="minimum-scale=1">
+    <meta name="viewport" content="minimum-scale=1, maximum-scale=5, user-scalable=yes">
     <style>
       @@include('./src/svg/%name%.css')
       html, body, #map {
@@ -150,7 +150,7 @@
           $("html").css({
             zoom: scale * 100 + "%"
           });
-          $("meta[name=viewport]").attr("content", "minimum-scale=" + (1 / scale));
+          $("meta[name=viewport]").attr("content", "minimum-scale=" + (1 / scale) + ", maximum-scale="+ (5 / scale) + ", user-scalable=yes");
 
           if (scale == 1)
           {
