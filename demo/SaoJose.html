@@ -24,8 +24,8 @@
 
       html, body, #map {
         margin: 0;
-        width: 594px;
-        height: 420px;
+        width: 720.23px;
+        height: 498.82px;
       }
       #map {
         opacity: 0;
@@ -804,7 +804,11 @@ viewBox="0 0 72023 49882"
             };
         },
         getSvgBoxSize: function(element) {
-          return $(element).closest("svg")[0].getBBox();
+          var box = $(element).closest("svg")[0].getBBox();
+          return {
+            width: box.width - (Math.abs(box.x) * 2),
+            height: box.height - (Math.abs(box.y) * 2)
+          }
         },
         getCenterX: function(element, scale) {
           if (element) {
