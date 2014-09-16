@@ -41,7 +41,7 @@ gulp.task('build', ['copyLibs'], function() {
   createSvgViewer('CristoRei');
   createSvgViewer('MemorialColina', { width: '420px', height: '594px' });
   createSvgViewer('SaintHilaire');
-  createSvgViewer('SaoJose');
+  createSvgViewer('SaoJose', { width: '720.23px', height: '498.82px' });
   createSvgViewer('SaoVicente');
 });
 

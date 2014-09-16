@@ -94,7 +94,11 @@
             };
         },
         getSvgBoxSize: function(element) {
-          return $(element).closest("svg")[0].getBBox();
+          var box = $(element).closest("svg")[0].getBBox();
+          return {
+            width: box.width - (Math.abs(box.x) * 2),
+            height: box.height - (Math.abs(box.y) * 2)
+          }
         },
         getCenterX: function(element, scale) {
           if (element) {
