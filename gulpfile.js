@@ -13,7 +13,7 @@ var gulp = require('gulp')
  */
 var defaultSvgViewerSize = {
   width: '594px',
-  height: '420px'
+  height: '540px'
 };
 
 /**
@@ -39,9 +39,9 @@ var createSvgViewer = function(name, size) {
  */
 gulp.task('build', ['copyLibs'], function() {
   createSvgViewer('CristoRei');
-  createSvgViewer('MemorialColina', { width: '420px', height: '594px' });
+  createSvgViewer('MemorialColina', { width: '420px', height: '700px' });
   createSvgViewer('SaintHilaire');
-  createSvgViewer('SaoJose', { width: '720.23px', height: '498.82px' });
+  createSvgViewer('SaoJose', { width: '720.23px', height: '610px' });
   createSvgViewer('SaoVicente');
 });
 
