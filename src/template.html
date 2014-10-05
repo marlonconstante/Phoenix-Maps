@@ -28,6 +28,22 @@
       #pin {
         stroke: #0060cb;
       }
+	.tooltip {
+	    opacity:0;
+	    transition: opacity 1s;
+	}
+	div.tooltip {
+	    background: white;
+	    position: absolute;
+	    width: 180px;
+      height: 60px;
+	    text-align:center;
+      border:solid white;
+      vertical-align:middle;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+	}
     </style>
   </head>
 
@@ -36,6 +52,11 @@
       @@include('./src/svg/%name%.svg')
       @@include('./src/svg/pin.svg')
       @@include('./src/svg/myLocation.svg')
+      <div class="absolute tooltip">
+      		Nome qualquer<br />
+      		01/01/0001<br />
+      		1234567890<br />
+      </div>
     </div>
 
     <script src="lib/jquery.js"></script>
@@ -83,6 +104,12 @@
             return (Mobile.Android() || Mobile.BlackBerry() || Mobile.iOS() || Mobile.Windows());
         }
       };
+
+      var People = {
+        Name: "Nome Completo",
+        Date: "01/01/0001",
+        Numer: "123456789"
+      }
 
       // Utilities to manipulate svg elements
       var SvgUtils = {
@@ -164,6 +191,47 @@
             window.scrollTo(x, y);
           } else {
             window.scrollTo(SvgUtils.getCenterX(element, scale), SvgUtils.getCenterY(element, scale));
+
+
+
+
+            var elementX = SvgUtils.getX(element, scale);
+            var mobileWidth = Mobile.width * scale;
+            var tooltipWidth = $("div.tooltip.absolute").width();
+            var tooltipHeight = $("div.tooltip.absolute").height();
+            var tooltipCenter = tooltipWidth / 2;
+
+
+            var x = elementX + (SvgUtils.getWidth(element) / 2);
+            var y = SvgUtils.getY(element) - tooltipHeight;
+            var tootipRightCorner = x + tooltipWidth;
+
+
+            if (tootipRightCorner > mobileWidth)
+            {
+              x -= tooltipWidth;
+            }
+
+            // if ((y - $("div.tooltip.absolute").height()) < 0)
+            // {
+            //   y += $("div.tooltip.absolute").height();
+            // }
+
+
+            // alert("Element Center: " + SvgUtils.getCenterX(element, scale)
+            // + "\n(tooltipWidth * scale): " + (tooltipWidth * scale)
+            // + "\ntootipRightCorner: " + tootipRightCorner
+            // + "\ntooltipWidth: " + tooltipWidth
+            // + "\nmobileWidth: " + mobileWidth
+            // + "\nX: " + x
+            // );
+
+
+
+            $("div.tooltip.absolute").css("left",  x + "px");
+            $("div.tooltip.absolute").css("top",  y + "px");
+            $("div.tooltip.absolute").css("opacity", "0.6");
+
           }
         }
       };
@@ -173,6 +241,10 @@
         init: function() {
           Mobile.width = Number(QueryString.width) || $("body").width();
           Mobile.height = Number(QueryString.height) || $("body").height();
+
+          People.Name = QueryString.name;
+          People.Date = QueryString.date;
+          People.Number = QueryString.number;
 
           var $map = $("#map");
           var width = $map.width() * Mobile.height / $map.height();

@@ -100,7 +100,7 @@ viewBox="0 0 42000 70000"
  </defs>
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <rect class="fil0" y="5300" width="42000" height="59400"/>
+  <rect class="fil0" y="0" width="42000" height="70000"/>
   <polygon class="fil1" points="-358,60099 42358,60099 42358,63685 -358,63685 "/>
   <polygon class="fil1" points="20132,39436 26260,39436 26260,46184 20132,46184 "/>
   <polygon class="fil1" points="22059,51200 23126,51200 23126,62032 22059,62032 "/>
@@ -1035,7 +1035,7 @@ viewBox="0 0 42000 70000"
             var y = SvgUtils.getY(element) + SvgUtils.getHeight(element) / 2;
             y -= Mobile.height / scale;
             y *= scale;
-            return y + (Mobile.height / 2);
+            return (y + (Mobile.height / 2));
           }
           return 0;
         },
@@ -1043,7 +1043,7 @@ viewBox="0 0 42000 70000"
           return (element.getBBox().x * SvgUtils.getSvgSize(element).width) / SvgUtils.getSvgBoxSize(element).width;
         },
         getY: function(element) {
-          return (element.getBBox().y * SvgUtils.getSvgSize(element).height) / SvgUtils.getSvgBoxSize(element).height;
+          return ((element.getBBox().y * SvgUtils.getSvgSize(element).height) / SvgUtils.getSvgBoxSize(element).height);
         },
         getWidth: function(element) {
           return (element.getBBox().width * SvgUtils.getSvgSize(element).width) / SvgUtils.getSvgBoxSize(element).width;
